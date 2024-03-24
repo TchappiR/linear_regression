@@ -8,4 +8,15 @@ def show_data(dataframe):
     print(plt.plot(dataframe["surface"], dataframe["prix"], "bo"))
     print(plt.show())
 
+def prepare_data(dataframe):
+	split_index = int(len(dataframe) * 0.75)
+	train_dataframe = dataframe.iloc[ : split_index]
+	test_dataframe = dataframe.iloc[split_index : ]
 
+	x_train = train_dataframe[ ["surface"] ]
+	y_train = train_dataframe[ ["prix"] ]
+
+	x_test = test_dataframe[ ["surface"] ]
+	y_test = test_dataframe[ ["prix"] ]
+
+	return x_train, y_train, x_test, y_test
