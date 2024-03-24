@@ -1,5 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+import math
 
 data_df = pd.read_csv("./prix_maisons.csv")
 
@@ -20,3 +22,8 @@ def prepare_data(dataframe):
 	y_test = test_dataframe[ ["prix"] ]
 
 	return x_train, y_train, x_test, y_test
+
+def regression(x_train, y_train):
+    model = LinearRegression()
+    model.fit(x_train, y_train)
+    return model
